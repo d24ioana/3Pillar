@@ -198,7 +198,7 @@ vars.putObject(&quot;joblist&quot;, joblist);</stringProp>
               <collectionProp name="Arguments.arguments">
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">location=Romania&amp;per_page=1000&amp;page=1</stringProp>
+                  <stringProp name="Argument.value">keyword=&amp;location=Romania&amp;per_page=100&amp;page=1</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
               </collectionProp>
@@ -206,8 +206,8 @@ vars.putObject(&quot;joblist&quot;, joblist);</stringProp>
             <stringProp name="HTTPSampler.domain">careers.3pillarglobal.com</stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
-            <stringProp name="HTTPSampler.path">/3pillar/opportunities?location=Romania&amp;per_page=100&amp;page=1</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/3pillar/opportunities?keyword=&amp;location=Romania&amp;per_page=100&amp;page=1</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -217,7 +217,7 @@ vars.putObject(&quot;joblist&quot;, joblist);</stringProp>
             <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
-            <stringProp name="TestPlan.comments">Created from cURL on 2022-05-05T18:16:41.4155202</stringProp>
+            <stringProp name="TestPlan.comments">Created from cURL on 2022-08-30T09:55:55.1474632</stringProp>
           </HTTPSamplerProxy>
           <hashTree>
             <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP HeaderManager" enabled="true">
@@ -240,11 +240,11 @@ vars.putObject(&quot;joblist&quot;, joblist);</stringProp>
                 </elementProp>
                 <elementProp name="referer" elementType="Header">
                   <stringProp name="Header.name">referer</stringProp>
-                  <stringProp name="Header.value">https://careers.3pillarglobal.com/3pillar/opportunities?location=Romania</stringProp>
+                  <stringProp name="Header.value">https://careers.3pillarglobal.com/3pillar/opportunities?keyword=&amp;location=Romania</stringProp>
                 </elementProp>
                 <elementProp name="sec-ch-ua" elementType="Header">
                   <stringProp name="Header.name">sec-ch-ua</stringProp>
-                  <stringProp name="Header.value">^\^</stringProp>
+                  <stringProp name="Header.value">^\^Chromium^\^;v=^\^104^\^, ^\^</stringProp>
                 </elementProp>
                 <elementProp name="sec-ch-ua-mobile" elementType="Header">
                   <stringProp name="Header.name">sec-ch-ua-mobile</stringProp>
@@ -280,21 +280,30 @@ vars.putObject(&quot;joblist&quot;, joblist);</stringProp>
                 </elementProp>
                 <elementProp name="user-agent" elementType="Header">
                   <stringProp name="Header.name">user-agent</stringProp>
-                  <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.54 Safari/537.36</stringProp>
+                  <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36</stringProp>
                 </elementProp>
                 <elementProp name="Accept-Encoding" elementType="Header">
                   <stringProp name="Header.name">Accept-Encoding</stringProp>
                   <stringProp name="Header.value">gzip, deflate</stringProp>
                 </elementProp>
               </collectionProp>
-              <stringProp name="TestPlan.comments">Created from cURL on 2022-05-05T18:16:41.4155202</stringProp>
+              <stringProp name="TestPlan.comments">Created from cURL on 2022-08-30T09:55:55.1485219</stringProp>
             </HeaderManager>
             <hashTree/>
             <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="titles" enabled="true">
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">titles</stringProp>
-              <stringProp name="RegexExtractor.regex">&lt;div class=&quot;job-title&quot; data-title=(.+?)&gt;\s*(.+?)\s*&lt;\/div&gt;</stringProp>
+              <stringProp name="RegexExtractor.regex">&lt;div\s*class=&quot;job-title(.+?)&gt;\s*(.+?)\s*&lt;\/div&gt;</stringProp>
               <stringProp name="RegexExtractor.template">$2$</stringProp>
+              <stringProp name="RegexExtractor.default"></stringProp>
+              <stringProp name="RegexExtractor.match_number">-1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="ids" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">ids</stringProp>
+              <stringProp name="RegexExtractor.regex">\s*&lt;a\s*href=&quot;https:\/\/careers.3pillarglobal.com\/3pillar\/opportunities\/(.+?)&quot; class=&quot;job editable-cursor&quot; contenteditable=&quot;false&quot; data-query-string=&quot;keyword=&amp;amp;location=Romania&amp;amp;per_page=100&amp;amp;page=1&quot;&gt;</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
               <stringProp name="RegexExtractor.default"></stringProp>
               <stringProp name="RegexExtractor.match_number">-1</stringProp>
             </RegexExtractor>
@@ -303,15 +312,6 @@ vars.putObject(&quot;joblist&quot;, joblist);</stringProp>
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">cities</stringProp>
               <stringProp name="RegexExtractor.regex">&lt;div class=&quot;job-location js-job-city &quot;&gt;\s*&lt;div class=&quot;location-inline&quot;&gt;(.+?)&lt;\/div&gt;&lt;div class=&quot;location-inline &quot;&gt;&amp;nbsp;-&lt;\/div&gt;</stringProp>
-              <stringProp name="RegexExtractor.template">$1$</stringProp>
-              <stringProp name="RegexExtractor.default"></stringProp>
-              <stringProp name="RegexExtractor.match_number">-1</stringProp>
-            </RegexExtractor>
-            <hashTree/>
-            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="ids" enabled="true">
-              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-              <stringProp name="RegexExtractor.refname">ids</stringProp>
-              <stringProp name="RegexExtractor.regex">&lt;a\s*href=&quot;https:\/\/careers.3pillarglobal.com\/3pillar\/opportunities\/(.+?)&quot; class=&quot;job editable-cursor&quot; contenteditable=&quot;false&quot; data-query-string=&quot;location=Romania&amp;amp;per_page=100&amp;amp;page=1&quot;&gt;</stringProp>
               <stringProp name="RegexExtractor.template">$1$</stringProp>
               <stringProp name="RegexExtractor.default"></stringProp>
               <stringProp name="RegexExtractor.match_number">-1</stringProp>
