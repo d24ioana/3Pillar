@@ -278,7 +278,7 @@ vars.putObject(&quot;joblist&quot;, joblist);</stringProp>
               <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="cities" enabled="true">
                 <stringProp name="RegexExtractor.useHeaders">false</stringProp>
                 <stringProp name="RegexExtractor.refname">cities</stringProp>
-                <stringProp name="RegexExtractor.regex">&lt;div class=&quot;posting-categories&quot;&gt;\s*&lt;div href=&quot;#&quot; class=&quot;sort-by-time posting-category medium-category-label&quot;&gt;\s*(.+?) \/\s*&lt;\/div&gt;</stringProp>
+                <stringProp name="RegexExtractor.regex">&lt;div href=&quot;#&quot; class=&quot;sort-by-time posting-category medium-category-label location&quot;&gt;(.+?) \/&lt;\/div&gt;</stringProp>
                 <stringProp name="RegexExtractor.template">$1$</stringProp>
                 <stringProp name="RegexExtractor.default"></stringProp>
                 <stringProp name="RegexExtractor.match_number">1</stringProp>
@@ -287,7 +287,7 @@ vars.putObject(&quot;joblist&quot;, joblist);</stringProp>
               <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="countries" enabled="true">
                 <stringProp name="RegexExtractor.useHeaders">false</stringProp>
                 <stringProp name="RegexExtractor.refname">countries</stringProp>
-                <stringProp name="RegexExtractor.regex">&lt;div href=&quot;#&quot; class=&quot;sort-by-team posting-category medium-category-label&quot;&gt;\s*(.+?) – (.+?) \/\s*&lt;\/div&gt;\s*&lt;div href=&quot;#&quot; class=&quot;sort-by-commitment posting-category medium-category-label&quot;&gt;\s*Full-time\s*&lt;\/div&gt;\s*&lt;\/div&gt;\s*&lt;\/div&gt;\s*&lt;div class=&quot;postings-btn-wrapper&quot;&gt;</stringProp>
+                <stringProp name="RegexExtractor.regex">&lt;div href=&quot;#&quot; class=&quot;sort-by-team posting-category medium-category-label department&quot;&gt;(.+?) – (.+?) \/&lt;\/div&gt;</stringProp>
                 <stringProp name="RegexExtractor.template">$1$</stringProp>
                 <stringProp name="RegexExtractor.default"></stringProp>
                 <stringProp name="RegexExtractor.match_number">1</stringProp>
